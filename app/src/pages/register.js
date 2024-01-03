@@ -15,7 +15,7 @@ const Register = () => {
         try {
             const res = await axios.post('/api/v1/user/register', values)
             if(res.data.success){
-                message.success('Registerd Successfully!')
+                message.success('Registered Successfully!')
                 navigate('/login')
             }
             else{
@@ -30,7 +30,7 @@ const Register = () => {
     }
   return (
     <>
-        <div className='fore-container'>
+        <div className='form-container'>
             <form layout="vertical" onSubmit={onfinishHandler} className='register-form'>
             <h3 className='text-center'>Registration Form</h3>
                 <Form.Item label="Name" name='name'>
