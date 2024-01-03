@@ -9,7 +9,7 @@ const register = () => {
   return (
     <>
         <div className='fore-container'>
-            <form layout="vertical" onFinish={onfinishHandler} className='register-form'>
+            <form layout="vertical" className='register-form'>
             <h3 className='text-center'>Registration Form</h3>
                 <Form.Item label="Name" name='name'>
                     <Input type='text' required />
@@ -20,7 +20,7 @@ const register = () => {
                 <Form.Item label="Password" name='password'>
                     <Input type='Password' required />
                 </Form.Item>
-                <Link to="/login" className='m-2' >Already User Login here</Link>
+                <Link to="/Login" className='m-2' >Already User Login here</Link>
                 <button className='btn btn-primary' type='Submit' > Register</button>
             </form>
         </div>
