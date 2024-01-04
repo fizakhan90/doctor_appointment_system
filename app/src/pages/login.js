@@ -10,7 +10,18 @@ import Spinner from './components/Spinner';
 const login = () => {
 //form handler
 const onfinishHandler = async(values) =>{
-  console.log(values);
+  try {
+    const res= await axios.post('/api/v1/user/login', values)
+    if(res.data.success){
+      localStorage.setItem("token",res.data.token);
+      message.success('Login Successfully');
+      navigate("/");
+
+    }
+  } catch (error) {
+    console.log(error)
+    message.error('Something went wrong')
+  }
 };
   
   
