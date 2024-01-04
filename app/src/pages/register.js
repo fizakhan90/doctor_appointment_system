@@ -7,10 +7,10 @@ import axios from 'axios'
 
 
 const Register = () => {
+ const navigate = useNavigate()
 
-
-    const navigate = useNavigate()
-
+   
+    //form handler
     const onfinishHandler = async(values) =>{
         try {
             const res = await axios.post('/api/v1/user/register', values)
@@ -42,7 +42,7 @@ const Register = () => {
                 <Form.Item label="Password" name='password'>
                     <Input type='Password' required />
                 </Form.Item>
-                <Link to="/login" className='m-2' >Already User Login here</Link>
+                <Link to="/login" className='m-2' >Already a User? Login here!</Link>
                 <button className='btn btn-primary' type='Submit' > Register</button>
             </form>
         </div>
