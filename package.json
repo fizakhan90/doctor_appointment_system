@@ -6,12 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "app" :"npm start --prefix, /app",
+    "dev" :  "concurrently \"npm run server\" \"npm run app\""
   },
   "keywords": [],
   "author": "Ritika,Fiza,Ayesha,Fawaz",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "concurrently": "^8.2.2",

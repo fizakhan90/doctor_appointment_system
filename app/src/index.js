@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { Provider } from 'react-redux';
+import './Index.css';
 import App from './App';
-//import "antd/dist/reset.css"
+import reportWebVitals from './reportWebVitals';
+import "antd/dist/reset.css"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Provider store={store}>
   <React.StrictMode>
-    <App />
+  <App />
   </React.StrictMode>
+  </Provider>
 );
 
