@@ -8,34 +8,26 @@ import {showLoading, hideLoading} from "..redux/features/alertSlice";
 import Spinner from './components/Spinner';
 
 const login = () => {
-  const navigate = useNavigate();
- const dispatch = useDispatch()
-   
-  //form handler
-  const onfinishHandler = async(values) =>{
-      try {
-        dispatch(showLoading())
-          const res = await axios.post('/api/v1/user/register', values);
-          dispatch(hideLoading())
-          if(res.data.success){
-              message.success('Login Successfully!')
-              navigate('/')
-          }
-          else{
-              message.error(res.data.message);
-          }
-      } catch (error) {
-        dispatch(hideLoading());
-          console.log(error)
-          message.error('Something went wrong')
-          
-      }
+//form handler
+const onfinishHandler = async(values) =>{
+  try {
+    const res= await axios.post('/api/v1/user/login', values)
+    if(res.data.success){
+      localStorage.setItem("token",res.data.token);
+      message.success('Login Successfully');
+      navigate("/");
 
+    }
+  } catch (error) {
+    console.log(error)
+    message.error('Something went wrong')
+  }
+};
   
   
   return (
     <div className='form-container'>
-    <form layout="vertical" onfinish={onfinishHandler} className='login-form'>
+    <Form layout="vertical" onSubmit={onfinishHandler} className='login-form'>
     <h3 className='text-center'>Login Form</h3>
         
         <Form.Item label="Email" name='email'>
@@ -46,9 +38,9 @@ const login = () => {
         </Form.Item>
         <Link to="/register" className='m-2' >Not a User? Register here!</Link>
         <button className='btn btn-primary' type='Submit' > Login</button>
-    </form>
+    </Form>
 </div>
   )
 }
-}
+
 export default login

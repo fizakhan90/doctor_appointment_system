@@ -14,9 +14,7 @@ const Register = () => {
     //form handler
     const onfinishHandler = async(values) =>{
         try {
-            dispatch(showLoading())
             const res = await axios.post('/api/v1/user/register', values)
-            dispatch(hideLoading())
             if(res.data.success){
                 message.success('Registered Successfully!')
                 navigate('/login')
@@ -34,8 +32,8 @@ const Register = () => {
     }
   return (
     <>
-        <div className='form-container'>
-            <form layout="vertical" onSubmit={onfinishHandler} className='register-form'>
+        <div className='fore-container'>
+            <Form layout="vertical" onSubmit={onfinishHandler} className='register-form'>
             <h3 className='text-center'>Registration Form</h3>
                 <Form.Item label="Name" name='name'>
                     <Input type='text' required />
@@ -48,7 +46,7 @@ const Register = () => {
                 </Form.Item>
                 <Link to="/login" className='m-2' >Already a User? Login here!</Link>
                 <button className='btn btn-primary' type='Submit' > Register</button>
-            </form>
+            </Form>
         </div>
     </>
   )

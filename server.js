@@ -3,7 +3,7 @@ const colors = require('colors')
 const dotenv = require('dotenv')
 const moragan = require('morgan');
 const connectDB = require('./config/db');
-const { route } = require('./routes/userRoute');
+const { route } = require('./routes/userRoutes');
 
 //dotenv config
 dotenv.config();
@@ -18,10 +18,10 @@ app.use(express.json())
 app.use(moragan('dev'))
 
 //routes
-app.use("/api/v1/user", require("./routes/userRoute"))
+app.use("/api/v1/user", require("./routes/userRoutes"))
 
 //port
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 //listen port
 app.listen(port, () => {
