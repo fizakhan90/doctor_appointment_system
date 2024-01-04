@@ -21,7 +21,7 @@ app.use(moragan('dev'))
 app.use("/api/v1/user", require("./routes/userRoutes"))
 
 //port
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 8080
 
 //listen port
 app.listen(port, () => {

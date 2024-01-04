@@ -31,7 +31,7 @@ const Register = () => {
   return (
     <>
         <div className='fore-container'>
-            <form layout="vertical" onSubmit={onfinishHandler} className='register-form'>
+            <Form layout="vertical" onSubmit={onfinishHandler} className='register-form'>
             <h3 className='text-center'>Registration Form</h3>
                 <Form.Item label="Name" name='name'>
                     <Input type='text' required />
@@ -44,7 +44,7 @@ const Register = () => {
                 </Form.Item>
                 <Link to="/login" className='m-2' >Already a User? Login here!</Link>
                 <button className='btn btn-primary' type='Submit' > Register</button>
-            </form>
+            </Form>
         </div>
     </>
   )

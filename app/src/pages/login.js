@@ -4,16 +4,29 @@ import { Form, Input, message} from 'antd';
 import {Link, useNavigate} from 'react-router-dom'; 
 import axios from 'axios'
 
-const login = () => {
+const Login = () => {
+const navigate = useNavigate()
 //form handler
 const onfinishHandler = async(values) =>{
-  console.log(values);
+  try {
+    const res= await axios.post('/api/v1/user/login', values)
+    if(res.data.success){
+      localStorage.setItem("token",res.data.token);
+      message.success('Login Successfully');
+      navigate("/");
+
+    }
+  } catch (error) {
+    console.log(error)
+    message.error('Something went wrong')
+  }
+  
 };
   
   
   return (
     <div className='form-container'>
-    <form layout="vertical" onfinish={onfinishHandler} className='login-form'>
+    <Form layout="vertical" onSubmit={onfinishHandler} className='login-form'>
     <h3 className='text-center'>Login Form</h3>
         
         <Form.Item label="Email" name='email'>
@@ -24,9 +37,9 @@ const onfinishHandler = async(values) =>{
         </Form.Item>
         <Link to="/register" className='m-2' >Not a User? Register here!</Link>
         <button className='btn btn-primary' type='Submit' > Login</button>
-    </form>
+    </Form>
 </div>
   )
 }
 
-export default login
+export default Login
