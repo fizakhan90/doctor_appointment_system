@@ -7,15 +7,15 @@ import axios from 'axios'
 
 
 const Register = () => {
+ const navigate = useNavigate()
 
-
-    const navigate = useNavigate()
-
+   
+    //form handler
     const onfinishHandler = async(values) =>{
         try {
             const res = await axios.post('/api/v1/user/register', values)
             if(res.data.success){
-                message.success('Registerd Successfully!')
+                message.success('Registered Successfully!')
                 navigate('/login')
             }
             else{
@@ -30,7 +30,7 @@ const Register = () => {
     }
   return (
     <>
-        <div className='fore-container'>
+        <div className='form-container'>
             <form layout="vertical" onSubmit={onfinishHandler} className='register-form'>
             <h3 className='text-center'>Registration Form</h3>
                 <Form.Item label="Name" name='name'>
@@ -42,7 +42,7 @@ const Register = () => {
                 <Form.Item label="Password" name='password'>
                     <Input type='Password' required />
                 </Form.Item>
-                <Link to="/login" className='m-2' >Already User Login here</Link>
+                <Link to="/login" className='m-2' >Already a User? Login here!</Link>
                 <button className='btn btn-primary' type='Submit' > Register</button>
             </form>
         </div>
