@@ -2,13 +2,35 @@ import React from 'react'
 import '../styles/loginstyles.css';
 import { Form, Input, message} from 'antd';
 import {Link, useNavigate} from 'react-router-dom'; 
-import axios from 'axios'
+import axios from 'axios';
+import{useDispatch} from 'react-redux';
+import {showLoading, hideLoading} from "..redux/features/alertSlice";
+import Spinner from './components/Spinner';
 
 const login = () => {
-//form handler
-const onfinishHandler = async(values) =>{
-  console.log(values);
-};
+  const navigate = useNavigate();
+ const dispatch = useDispatch()
+   
+  //form handler
+  const onfinishHandler = async(values) =>{
+      try {
+        dispatch(showLoading())
+          const res = await axios.post('/api/v1/user/register', values);
+          dispatch(hideLoading())
+          if(res.data.success){
+              message.success('Login Successfully!')
+              navigate('/')
+          }
+          else{
+              message.error(res.data.message);
+          }
+      } catch (error) {
+        dispatch(hideLoading());
+          console.log(error)
+          message.error('Something went wrong')
+          
+      }
+
   
   
   return (
@@ -28,5 +50,5 @@ const onfinishHandler = async(values) =>{
 </div>
   )
 }
-
+}
 export default login
