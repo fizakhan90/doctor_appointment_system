@@ -16,6 +16,7 @@ const Login = () => {
       try {
         dispatch(showLoading())
           const res = await axios.post('/api/v1/user/register', values);
+          window.location.reload()
           dispatch(hideLoading())
           if(res.data.success){
               message.success('Login Successfully!')
@@ -31,11 +32,14 @@ const Login = () => {
           
       }
 
+    }
+  
+}
   
   
   return (
     <div className='form-container'>
-    <form layout="vertical" onfinish={onfinishHandler} className='login-form'>
+    <Form layout="vertical" onSubmit={onfinishHandler} className='login-form'>
     <h3 className='text-center'>Login Form</h3>
         
         <Form.Item label="Email" name='email'>
@@ -46,9 +50,9 @@ const Login = () => {
         </Form.Item>
         <Link to="/register" className='m-2' >Not a User? Register here!</Link>
         <button className='btn btn-primary' type='Submit' > Login</button>
-    </form>
+    </Form>
 </div>
-  )
-}
-}
+  );
+  
+
 export default Login
