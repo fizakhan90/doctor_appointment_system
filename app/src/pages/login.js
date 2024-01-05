@@ -7,9 +7,8 @@ import{useDispatch} from 'react-redux';
 import {showLoading, hideLoading} from "..redux/features/alertSlice";
 import Spinner from './components/Spinner';
 
-const Login = () => {
+const login = () => {
 //form handler
-const navigate =  useNavigate()
 const onfinishHandler = async(values) =>{
   try {
     const res= await axios.post('/api/v1/user/login', values)
@@ -41,7 +40,7 @@ const onfinishHandler = async(values) =>{
         <button className='btn btn-primary' type='Submit' > Login</button>
     </Form>
 </div>
-  )
-}
+  );
+  
 
-export default Login
+export default login

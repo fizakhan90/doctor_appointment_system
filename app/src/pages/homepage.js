@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import axios from 'axios'
+import React from 'react'
+
 const Homepage = () => {
 //login user data
 const getUserData = async () =>{
@@ -21,9 +21,9 @@ useEffect(()=>{
 
 })
   return (
-    <div>
+    <Layout>
         <h1>Home Page</h1>
-    </div>
+    </Layout>
   )
 }
 
