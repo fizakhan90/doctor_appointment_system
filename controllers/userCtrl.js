@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 //register callback
 const registerController = async(req,res) =>{
     try{
-        const existingUser = await userModel.findOne({email : req.body.email})
+        const existingUser = await userModel.findById({email : req.body.email})
         if(existingUser){
             return res.status(200).send({message : 'User already exists', success : false})
         }
