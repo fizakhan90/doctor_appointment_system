@@ -7,7 +7,7 @@ import{useDispatch} from 'react-redux';
 import {showLoading, hideLoading} from "..redux/features/alertSlice";
 import Spinner from './components/Spinner';
 
-const login = () => {
+const Login = () => {
   const navigate = useNavigate();
  const dispatch = useDispatch()
    
@@ -51,4 +51,4 @@ const login = () => {
   )
 }
 }
-export default login
+export default Login

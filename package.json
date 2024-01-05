@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "app": "npm start --prefix, /app",
-    "dev": "concurrently \"npm run server\" \"npm run app\""
+    "app": "npm start --prefix, /app"
+    
   },
   "keywords": [],
   "author": "Ritika,Fiza,Ayesha,Fawaz",
