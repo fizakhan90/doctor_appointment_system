@@ -12,7 +12,7 @@ export const userMenu =[
     {
         name:'Apply Doctor',
         path:'/apply doctor',
-        icon:'fa-solid fa-user-doctor'
+        icon:'fa-solid fa-user-doctor' 
     },
     {
         name:'Profile',
@@ -34,7 +34,7 @@ export const adminMenu = [
     
         {
             name:'Doctors',
-            path:'/doctors',
+            path:'/admin/doctors',
             icon:'fa-solid fa-user-doctor'
         },
         {
@@ -44,7 +44,7 @@ export const adminMenu = [
         },
         {
             name:'Users',
-            path:'/users',
+            path:'/admin/users',
             icon:'fa-solid fa-user'
         },
         {

@@ -7,7 +7,7 @@ import{useDispatch} from 'react-redux';
 import {showLoading, hideLoading} from "..redux/features/alertSlice";
 import Spinner from './components/Spinner';
 
-const login = () => {
+const Login = () => {
 //form handler
 const onfinishHandler = async(values) =>{
   try {
@@ -41,6 +41,6 @@ const onfinishHandler = async(values) =>{
     </Form>
 </div>
   );
-  
+}
 
-export default login
+export default Login
