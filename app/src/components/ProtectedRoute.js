@@ -18,7 +18,7 @@
       {token : localStorage.getItem('token')},
 
       { headers: {
-   Authorization: 'Bearer ${localStorage.getItem("token")}',
+   Authorization: `Bearer ${localStorage.getItem("token")}`,
 
       },
       

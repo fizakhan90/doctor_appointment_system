@@ -3,11 +3,9 @@ import '../styles/loginstyles.css';
 import { Form, Input, message} from 'antd';
 import {Link, useNavigate} from 'react-router-dom'; 
 import axios from 'axios';
-import{useDispatch} from 'react-redux';
-import {showLoading, hideLoading} from "..redux/features/alertSlice";
-import Spinner from './components/Spinner';
 
 const Login = () => {
+  const navigate = useNavigate()
 //form handler
 const onfinishHandler = async(values) =>{
   try {
