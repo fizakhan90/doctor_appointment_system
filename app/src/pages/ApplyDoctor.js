@@ -15,7 +15,7 @@ const ApplyDoctor =() =>{
     //handle form
     const handleFinish = async (values) =>{
         try {
-            dispatch(showLoading())
+            dispatch(showLoading());
             const res = await axios.post('/api/user/apply-doctor',{...values, userId: user._id}, {
                 headers : {
                     Authorization : `Bearer ${localStorage.getItem('token')}`

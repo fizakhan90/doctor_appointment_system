@@ -11,3 +11,6 @@ router.get('/getAllUsers', authMiddleware,getAllUsersController)
 //GET METHOD || DOCTORS
 router.get('/getAllDoctors', authMiddleware,getAllDoctorsController)
 module.exports = router
+
+//POST ACCOUNT STATUS
+router.post('/changeAccountStatus', authMiddleware,changeAccountStatusController)

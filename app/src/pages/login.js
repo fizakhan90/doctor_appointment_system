@@ -4,7 +4,7 @@ import { Form, Input, message} from 'antd';
 import {Link, useNavigate} from 'react-router-dom'; 
 import axios from 'axios';
 import{useDispatch} from 'react-redux';
-import {showLoading, hideLoading} from "..redux/features/alertSlice";
+import {showLoading, hideLoading} from "../redux/features/alertSlice";
 import Spinner from './components/Spinner';
 
 const Login = () => {
@@ -18,11 +18,16 @@ const onfinishHandler = async(values) =>{
       navigate("/");
 
     }
+<<<<<<< HEAD
+  
+
+=======
   } catch (error) {
     console.log(error)
     message.error('Something went wrong')
   }
 };
+>>>>>>> e402f3119aa11b2e72d4acbc75f2401e8ed0c33f
   
   
   return (
@@ -41,6 +46,12 @@ const onfinishHandler = async(values) =>{
     </Form>
 </div>
   );
+<<<<<<< HEAD
+  
+  }
+export default Login
+=======
 }
 
 export default Login
+>>>>>>> e402f3119aa11b2e72d4acbc75f2401e8ed0c33f
