@@ -8,33 +8,26 @@ import {showLoading, hideLoading} from "../redux/features/alertSlice";
 import Spinner from './components/Spinner';
 
 const Login = () => {
-  const navigate = useNavigate();
- const dispatch = useDispatch()
-   
-  //form handler
-  const onfinishHandler = async(values) =>{
-      try {
-        dispatch(showLoading())
-          const res = await axios.post('/api/v1/user/register', values);
-          window.location.reload()
-          dispatch(hideLoading())
-          if(res.data.success){
-              message.success('Login Successfully!')
-              navigate('/')
-          }
-          else{
-              message.error(res.data.message);
-          }
-      } catch (error) {
-        dispatch(hideLoading());
-          console.log(error)
-          message.error('Something went wrong')
-          
-      }
+//form handler
+const onfinishHandler = async(values) =>{
+  try {
+    const res= await axios.post('/api/v1/user/login', values)
+    if(res.data.success){
+      localStorage.setItem("token",res.data.token);
+      message.success('Login Successfully');
+      navigate("/");
 
     }
+<<<<<<< HEAD
   
 
+=======
+  } catch (error) {
+    console.log(error)
+    message.error('Something went wrong')
+  }
+};
+>>>>>>> e402f3119aa11b2e72d4acbc75f2401e8ed0c33f
   
   
   return (
@@ -53,6 +46,12 @@ const Login = () => {
     </Form>
 </div>
   );
+<<<<<<< HEAD
   
   }
 export default Login
+=======
+}
+
+export default Login
+>>>>>>> e402f3119aa11b2e72d4acbc75f2401e8ed0c33f

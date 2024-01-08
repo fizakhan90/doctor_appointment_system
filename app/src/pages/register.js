@@ -8,7 +8,7 @@ import {showLoading, hideLoading} from "../redux/features/alertSlice"
 
 
 const Register = () => {
- const navigate = useNavigate();
+ const navigate = useNavigate()
  const dispatch = useDispatch()
    
     //form handler

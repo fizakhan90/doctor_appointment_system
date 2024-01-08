@@ -1,7 +1,7 @@
 const userModel = require('../models/userModels')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-
+const doctorModel = require('../models/doctorModel')
 //register callback
 const registerController = async(req,res) =>{
     try{
@@ -48,5 +48,141 @@ const loginController = async(req,res) =>{
     }
 }
 
+const authController = async (req,res) =>{
+    try {
+       const user = await userModel.findOne({_id : req.body.userId}) 
+       if(!user){
+        return res.status(200).send({
+            message : 'user not found',
+            success : false
+        })
+       } else{
+        res.status(200).send({
+            success : true,
+            data:{
+                name : user.name,
+                email : user.email
+            }
+        })
+       }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            message : 'auth error',
+            success : failure,
+            error
+        })
+    }
+};
+//Apply Doctor CTRL
+const applyDoctorController = async(req,res) =>{
+    try {
+        const newDoctor = await doctorModel({...req.body, status : 'pending'})
+        await newDoctor.save()
+        const adminUser = await userModel.findOne({isAdmin : true})
+        const notification = adminUser.notification
+        notification.push({
+            type : 'apply-doctor-request',
+            message : `${newDoctor.firstName} ${newDoctor.lastName} has applied for a Doctor Account`,
+            data :{
+                doctorId : newDoctor._id,
+                name : newDoctor.firstName + " " + newDoctor.lastName,
+                onClickPath : 'admin/doctors'
+            }
+        })
+        await userModel.findByIdAndUpdate(adminUser._id,{notification})
+        res.status(201).send({
+            success : true,
+            message : 'Doctor Account Applied Succesfully'
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success : false,
+            error,
+            message : 'Error while applying for Doctor'
+        })
+        
+    }
 
-module.exports = {loginController, registerController};
+}
+//notification ctrl
+const getAllNotificationController = async() =>{
+    try {
+        const user = await userModel.findOne({_id : req.body.userId})
+        const seennotification = user.seennotification
+        const notification = user.notification
+        seennotification.push(...notification)
+        user.notification = []
+        user.seennotification = notification 
+        const updateUser = await user.save();
+        res.status(200).send({
+            success : true,
+            message : "all notifications marked as read",
+            data : updateUser
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            message: 'Error in notification',
+            success : false,
+            error
+
+        })
+       
+    }
+
+
+}
+
+const deleteAllNotificationController= async(req,res) =>{
+    try {
+        const user = await userModel.findOne({_id: req.body.userId})
+        user.notification = []
+        user.seennotification = []
+        const updatedUser = await user.save()
+        updatedUser.password = undefined
+        res.status(200).send({
+            success : true,
+            message : "Notifications deleted succesfully",
+            data : updatedUser
+        })
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success : false,
+            message: "unable to delete all notification",
+            error
+        });
+
+    }
+};
+//Get All Doc
+const getAllDoctorsController = async () => {
+    try {
+        const doctors = await doctorModel.find({status: 'approved'})
+        res.status(200).send({
+            success:true,
+            message:"Doctors Lists Fetched Successfully",
+            data: doctors,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            error,
+            message:'Error while fetching doctor'
+        })
+    }
+}
+
+module.exports = {
+    loginController, 
+    registerController, 
+    applyDoctorController,
+    getAllNotificationController, 
+    deleteAllNotificationController, 
+    authController,
+    getAllDoctorsController
+};
