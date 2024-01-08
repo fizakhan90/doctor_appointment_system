@@ -4,7 +4,7 @@ import { Form, Input, message} from 'antd';
 import {Link, useNavigate} from 'react-router-dom'; 
 import axios from 'axios';
 import{useDispatch} from 'react-redux';
-import {showLoading, hideLoading} from "..redux/features/alertSlice";
+import {showLoading, hideLoading} from "../redux/features/alertSlice";
 import Spinner from './components/Spinner';
 
 const Login = () => {
@@ -34,7 +34,7 @@ const Login = () => {
 
     }
   
-}
+
   
   
   return (
@@ -54,5 +54,5 @@ const Login = () => {
 </div>
   );
   
-
+  }
 export default Login
