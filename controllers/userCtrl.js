@@ -2,10 +2,12 @@ const userModel = require('../models/userModels')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const doctorModel = require('../models/doctorModel')
+const appointmentModel = require("../models/appointmentModel");
+const moment = require("moment");
 //register callback
 const registerController = async(req,res) =>{
     try{
-        const existingUser = await userModel.findById({email : req.body.email})
+        const existingUser = await userModel.findOne({email : req.body.email})
         if(existingUser){
             return res.status(200).send({message : 'User already exists', success : false})
         }
@@ -37,7 +39,7 @@ const loginController = async(req,res) =>{
             return res.status(200).send({message : 'Invalid Email or Password',success : false})
         }
         const token = jwt.sign({id: user._id},process.env.JWT_TOKEN,{expiresIn: '1d'})
-        res.status(200).send({message:"Login Succesfully",success : true},token);
+        res.status(200).send({message:"Login Succesfully",success : true, token});
 
 
 
@@ -160,7 +162,7 @@ const deleteAllNotificationController= async(req,res) =>{
     }
 };
 //Get All Doc
-const getAllDoctorsController = async () => {
+const getAllDoctorsController = async (req,res) => {
     try {
         const doctors = await doctorModel.find({status: 'approved'})
         res.status(200).send({
@@ -177,6 +179,93 @@ const getAllDoctorsController = async () => {
     }
 }
 
+//BOOK APPOINTMENT
+const bookAppointmentController = async (req, res) => {
+    try {
+      req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
+      req.body.time = moment(req.body.time, "HH:mm").toISOString();
+      req.body.status = "pending";
+      const newAppointment = new appointmentModel(req.body);
+      await newAppointment.save();
+      const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
+      user.notifcation.push({
+        type: "New-appointment-request",
+        message: `A new Appointment Request from ${req.body.userInfo.name}`,
+        onCLickPath: "/user/appointments",
+      });
+      await user.save();
+      res.status(200).send({
+        success: true,
+        message: "Appointment Book succesfully",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        success: false,
+        error,
+        message: "Error While Booking Appointment",
+      });
+    }
+  };
+  
+  // booking bookingAvailabilityController
+  const bookingAvailabilityController = async (req, res) => {
+    try {
+      const date = moment(req.body.date, "DD-MM-YY").toISOString();
+      const fromTime = moment(req.body.time, "HH:mm")
+        .subtract(1, "hours")
+        .toISOString();
+      const toTime = moment(req.body.time, "HH:mm").add(1, "hours").toISOString();
+      const doctorId = req.body.doctorId;
+      const appointments = await appointmentModel.find({
+        doctorId,
+        date,
+        time: {
+          $gte: fromTime,
+          $lte: toTime,
+        },
+      });
+      if (appointments.length > 0) {
+        return res.status(200).send({
+          message: "Appointments not Availibale at this time",
+          success: true,
+        });
+      } else {
+        return res.status(200).send({
+          success: true,
+          message: "Appointments available",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        success: false,
+        error,
+        message: "Error In Booking",
+      });
+    }
+  };
+  
+  const userAppointmentsController = async (req, res) => {
+    try {
+      const appointments = await appointmentModel.find({
+        userId: req.body.userId,
+      });
+      res.status(200).send({
+        success: true,
+        message: "Users Appointments Fetch SUccessfully",
+        data: appointments,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        success: false,
+        error,
+        message: "Error In User Appointments",
+      });
+    }
+  };
+
 module.exports = {
     loginController, 
     registerController, 
@@ -184,5 +273,8 @@ module.exports = {
     getAllNotificationController, 
     deleteAllNotificationController, 
     authController,
-    getAllDoctorsController
+    getAllDoctorsController,
+    bookAppointmentController,
+    bookingAvailabilityController,
+    userAppointmentsController,
 };

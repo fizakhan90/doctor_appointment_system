@@ -3,7 +3,7 @@ import "../styles/Layoutstyles.css"
 import { adminMenu, userMenu } from '../Data/data';
 import{ Link, useLocation, useNavigate} from "react-router-dom"
 import { useSelector } from 'react-redux';
-import {message} from 'antd'
+import {message, Badge} from 'antd'
 const Layout = ({ children }) => {
     const {user}= useSelector(state => state.user)
     const location= useLocation()
@@ -14,6 +14,28 @@ const handleLogout=() => {
     message.success('Logout Successfully')
     navigate('/login')
 };
+
+// =========== doctor menu ===============
+const doctorMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "fa-solid fa-house",
+    },
+    {
+      name: "Appointments",
+      path: "/doctor-appointments",
+      icon: "fa-solid fa-list",
+    },
+
+    {
+      name: "Profile",
+      path: `/doctor/profile/${user?._id}`,
+      icon: "fa-solid fa-user",
+    },
+  ];
+  // =========== doctor menu ===============
+
 
 
     //rendering menu list
