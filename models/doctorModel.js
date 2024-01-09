@@ -50,7 +50,9 @@ const doctorSchema = new mongoose.Schema({
     },
 
 
-},{timestamps : true})
+},
+{timestamps : true}
+)
 
 const doctorModel = mongoose.model('doctors',doctorSchema)
 mongoose.model.exports = doctorModel

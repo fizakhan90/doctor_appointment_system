@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const authMiddleware = require('../middlewares/authMiddleware')
-const { getAllUsersController ,getAllDoctorsController} = require('../controllers/adminCtrl')
+const { getAllUsersController ,getAllDoctorsController, changeAccountStatusController} = require('../controllers/adminCtrl')
 
 //GET METHOD || USERS
 router.get('/getAllUsers', authMiddleware,getAllUsersController)
@@ -14,3 +14,5 @@ module.exports = router
 
 //POST ACCOUNT STATUS
 router.post('/changeAccountStatus', authMiddleware,changeAccountStatusController)
+
+module.exports = router;
