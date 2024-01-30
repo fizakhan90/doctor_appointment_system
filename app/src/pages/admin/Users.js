@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./../../components/Layout";
+import Layout from "./../../components/layout.js";
 import axios from "axios";
 import { Table } from "antd";
 const Users = () => {
