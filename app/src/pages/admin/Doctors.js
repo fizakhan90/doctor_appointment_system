@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./../../components/Layout";
+import Layout from "./../../components/layout.js";
 import axios from "axios";
 import { message, Table } from "antd";
 

@@ -23,11 +23,7 @@ router.post('/get-all-notification',authMiddleware, getAllNotificationController
 //Notification Doctor || POST
 router.post('/delete-all-notification',authMiddleware, deleteAllNotificationController)
 
-router.post(
-    "/delete-all-notification",
-    authMiddleware,
-    deleteAllNotificationController
-);
+
 
 //GET ALL DOC
 router.get('/getAllDoctors', authMiddleware, getAllDoctorsController)
