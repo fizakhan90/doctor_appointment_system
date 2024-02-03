@@ -38,8 +38,8 @@ function App() {
        element={<ProtectedRoute>
           <Doctors/> 
         </ProtectedRoute>} />
-      <Route path='/login' element={
-      <PublicRoute><Login/>
+      <Route path='/home-page' element={
+      <PublicRoute><LandingPage/>
       </PublicRoute>} />
       <Route path='/register' element={
       <PublicRoute><Register/>
