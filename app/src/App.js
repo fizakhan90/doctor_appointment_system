@@ -18,102 +18,43 @@ function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
     <>
-      <BrowserRouter>
-        {loading ? (
-          <Spinner />
-        ) : (
-          <Routes>
-            <Route
-              path="/apply-doctor"
-              element={
-                <ProtectedRoute>
-                  <ApplyDoctor />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/users"
-              element={
-                <ProtectedRoute>
-                  <Users />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/doctors"
-              element={
-                <ProtectedRoute>
-                  <Doctors />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/doctor/profile/:id"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/doctor/book-appointment/:doctorId"
-              element={
-                <ProtectedRoute>
-                  <BookingPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/notification"
-              element={
-                <ProtectedRoute>
-                  <NotificationPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <PublicRoute>
-                  <Login />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PublicRoute>
-                  <Register />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/appointments"
-              element={
-                <ProtectedRoute>
-                  <Appointments />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/doctor-appointments"
-              element={
-                <ProtectedRoute>
-                  <DoctorAppointments />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <HomePage />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        )}
-      </BrowserRouter>
+
+     <BrowserRouter>
+     {loading ? (<Spinner /> 
+     ) : (
+     <Routes>
+      <Route path='/'
+       element={<ProtectedRoute>
+          <Homepage/> 
+        </ProtectedRoute>} />
+        <Route path='/apply-doctor'
+       element={<ProtectedRoute>
+          <ApplyDoctor/> 
+        </ProtectedRoute>} />
+        <Route path='/notification'
+       element={<ProtectedRoute>
+          <NotificationPage/> 
+        </ProtectedRoute>} />
+        <Route path='/admin/users'
+       element={<ProtectedRoute>
+          <Users/> 
+        </ProtectedRoute>} />
+        <Route path='/admin/doctors'
+       element={<ProtectedRoute>
+          <Doctors/> 
+        </ProtectedRoute>} />
+      <Route path='/home-page' element={
+      <PublicRoute><LandingPage/>
+      </PublicRoute>} />
+      <Route path='/register' element={
+      <PublicRoute><Register/>
+      </PublicRoute>} />
+      </Routes>
+     
+     )}
+     </BrowserRouter>
+     
+
     </>
   );
 }
