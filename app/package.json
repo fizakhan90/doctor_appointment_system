@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "proxy": "http://localhost:3000",
+  "proxy": "http://127.0.0.1:8080",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +11,7 @@
     "antd": "^5.12.6",
     "axios": "^1.6.3",
     "concurrently": "^8.2.2",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
