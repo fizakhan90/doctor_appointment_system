@@ -21,6 +21,7 @@ font-size: 35px;
 margin: 4px;
 font-family: 'Times New Roman';
 margin-top: 6px;
+background: url('https://demo.kaliumtheme.com/medical/wp-content/uploads/2018/11/happy-patient-and-doctor.jpg')
 }
 .left:hover{
   cursor: cell;
@@ -112,6 +113,4 @@ float: inline-end;
 .body{
   background: url('https://wallpaperaccess.com/full/3988495.jpg') ;
   background-position: center;
-
-
 }

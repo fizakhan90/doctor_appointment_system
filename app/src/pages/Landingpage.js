@@ -1,65 +1,41 @@
+import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom for navigation
+import "../styles/Landing.css"; // Import CSS file
 
-  import  "../styles/Landing.css" ;
-  import React from "react";
-  import Form from "antd/es/form/Form";
+const LandingPage = () => {
+  return (
   
-  
-  function Landingpage() {
-    return (
+    
+      <><div header className="header">
       <div>
-        <div>
-  <header className="header">
-    <div>
-      <div classname="left">
-        {'{'}/* left box for logo */{'}'} 
-        Doctors' App 
+        <div className="left">
+          {/* left box for logo */}
+          Doctors' App
+        </div>
+        <div className="mid">
+          {/* mid box for nav */}
+          <ul className="navbar">
+            <li><a href="/">Home</a></li> {/* Use Link or NavLink for internal navigation */}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/reviews">Reviews</a></li>
+          </ul>
+        </div>
+        <div className="right">
+          {/* right box for buttons */}
+          <button><div className="btn">Search for Doctors</div></button>
+          <button><div className="btn"> Contact Us</div></button>
+        </div>
+        <div className="text-right">
+          We connect Doctors and Patients!
+        </div>
       </div>
-      <div classname="mid">
-        {'{'}/* mid box for nav */{'}'} 
-        <ul classname="navbar">
-          <li><a href> Home</a></li>
-          <li><a href>Login</a></li>
-          <li><a href>Sign Up</a></li>
-          <li><a href>Reviews</a></li>
-        </ul>
-      </div>
-      <div classname="right">
-        {'{'}/* right box for buttons */{'}'}
-        <button><div classname="btn">Search for Doctors</div></button>
-        <button><div classname="btn"> Contact Us</div></button>
-      </div>
-      <div classname="text-right">
-        We connect Doctors and Patients!
-      </div>
-    </div></header> 
-  <div classname="img-right">
-  </div>
-  <div classname="form-container ">
-    <form layout="vertical" onfinish="{onfinishHandler}" classname="register-form">
-      <h3 classname="text-center">Login Form</h3>
-      <Form.item label="Email" name="email">
-        <input type="email" required />
-      </Form.item>
-      <Form.item label="Password" name="password">
-        <input type="password" required />
-      </Form.item>
-      <link to="/register" classname="m-2" />
-      Not a user? Register here!
-      <button classname="btn btn-primary" type="submit">
-        Login
-      </button>
-    </form>
-  </div>
-  );
-  {'{'}"{'}'}"{'}'};
-  ){'}'}
-</div>
-      </div>
-    )
+    </div><div className="img-right">
+        {/* Placeholder for right image */}
+
+      </div></>
+    
+  )
+
   }
-  
-  export default Landingpage
-  
-  
-
-
+export default LandingPage;

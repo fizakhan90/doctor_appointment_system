@@ -107,6 +107,7 @@ const LoginForm = () => {
   };
 
   return (
+    
     <div className="container">
       <div className="form-container">
         <h2>Login Form</h2>
@@ -119,6 +120,11 @@ const LoginForm = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
+          <div className="left">
+          {/* left box for logo */}
+          Doctors' App
+        </div>
+        
           <div>
             <label>Password:</label>
             <input

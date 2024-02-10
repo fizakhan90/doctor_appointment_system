@@ -7,46 +7,66 @@
 
 .form-container {
   background-color: #f2f8fd;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 40px;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .form-container form {
   display: flex;
-  flex-direction: column;
+  flex-direction: auto;
 }
 
 .form-container label {
-  margin-bottom: 8px;
+  margin-bottom: 40px;
+  padding: auto;
 }
 
 .form-container input {
   padding: 10px;
   margin-bottom: 16px;
-  border: 1px solid #ccc;
+  border: rgb(50, 157, 123);;
   border-radius: 4px;
+  cursor: cell;
+  font-family: 'Times New Roman';
 }
 
 .form-container button {
   padding: 12px;
-  background-color: #007bff;
+  background-color:rgb(50, 157, 123);
   color: white;
-  border: none;
+  border: black;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: cell;
+  font-family: 'Times New Roman';
 }
 
 .form-container button:hover {
-  background-color: #0056b3;
+  background-color: rgb(50, 157, 123);
+  cursor: cell;
 }
 
 .error-message {
-  color: red;
+  color: solid rgb(1, 198, 131);
   margin-top: 8px;
+  font-family: 'Times New Roman';
+  cursor: cell;
 }
+.body{
+  background: url('https://wallpaperaccess.com/full/3988495.jpg') ;
+  background-position: center;
+}
+/* .mid{
+ 
+  display: block;
+  width: 33%;
+  margin: 20px auto;
+   /* border: 2px solid rgb(1, 198, 131); */
+   /* color: black;
+   font-family: 'Times New Roman';
+ } */ 
