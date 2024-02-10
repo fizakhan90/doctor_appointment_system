@@ -1,7 +1,13 @@
 
-  import  "../styles/Login.css" ;
-  import React from "react"
-  <div>
+  import  "../styles/Landing.css" ;
+  import React from "react";
+  import Form from "antd/es/form/Form";
+  
+  
+  function Landingpage() {
+    return (
+      <div>
+        <div>
   <header className="header">
     <div>
       <div classname="left">
@@ -31,12 +37,12 @@
   <div classname="form-container ">
     <form layout="vertical" onfinish="{onfinishHandler}" classname="register-form">
       <h3 classname="text-center">Login Form</h3>
-      <form.item label="Email" name="email">
+      <Form.item label="Email" name="email">
         <input type="email" required />
-      </form.item>
-      <form.item label="Password" name="password">
+      </Form.item>
+      <Form.item label="Password" name="password">
         <input type="password" required />
-      </form.item>
+      </Form.item>
       <link to="/register" classname="m-2" />
       Not a user? Register here!
       <button classname="btn btn-primary" type="submit">
@@ -48,3 +54,12 @@
   {'{'}"{'}'}"{'}'};
   ){'}'}
 </div>
+      </div>
+    )
+  }
+  
+  export default Landingpage
+  
+  
+
+

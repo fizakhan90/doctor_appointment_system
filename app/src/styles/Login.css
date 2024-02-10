@@ -1,117 +1,52 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Bentham&family=Roboto:ital,wght@1,700&display=swap');
-  
-.form-container{ display: flex;
-align-items: center;
-justify-content: center;
-height: auto;
-margin-left: 80vh;
-margin-bottom: 40vh}
-
-.left{
-/* border: 2px solid rgb(1, 198, 131); */
-color: black;
-display: inline-block;
-position: absolute;
-left: 34px;
-top: 20px;
-line-height: 12px;
-padding: 10px;
-font-size: 35px;
-margin: 4px;
-font-family: 'Times New Roman';
-margin-top: 6px;
-}
-.left:hover{
-  cursor: cell;
-}
-.mid{
- 
- display: block;
- width: 33%;
- margin: 20px auto;
-  /* border: 2px solid rgb(1, 198, 131); */
-  color: black;
-  font-family: 'Times New Roman';
-}
-.right{
-  /* border: 2px solid rgb(1, 198, 131); */
-  color: black;
-  display: inline block;
-  position: absolute;
-  right: 34px;
-  top: 40px;
-  font-family: 'Times New Roman';
-  padding: 4px;
-}
-.navbar{
-  display: inline-block;
-  
-}
-.navbar li{
-  display: inline-block;
-  font-size: 20px;
-}
-.navbar li a{
-color: black;
-text-decoration: none;
-cursor: cell;
-padding: 34px 23px;
-font-family: 'Times New Roman';
-}
-.navbar li a:hover{
-text-decoration: underline ;
-background-color: rgb(50, 157, 123);
-padding: 34px 23px;
-margin:20px auto ;
-overflow-y: hidden;
-}
-.navbar li a:active{
-  text-decoration: underline ;
-background-color: rgb(50, 157, 123);
-padding: 34px 23px;
-margin:20px auto ;
-}
-.btn {
-   margin: 0px 9px;
-   padding: 3px 11px;
-   /* border: gray; */
-   border-radius: 10px;
-   font-size: 16px;
-   /* color: black; */
-   background-color: rgb(50, 157, 123);
-   font-family: 'Times New Roman';
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.btn:hover, .m-2:hover{
-  cursor: cell;
+.form-container {
+  background-color: #f2f8fd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.text-right{
-  border: 2px solid rgb(1, 198, 131);
-margin: 50px 59px;
-padding: 17px;
-width: 33%;
-border-radius: 20px;
-font-style: italic ;
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-text-emphasis: bold;
-font-size: 44px;
-font-family: 'Times New Roman';
-float: inline-end;
-}
-.register-form{
-  cursor: cell;
-  font-family: 'Times New Roman';
-}
-/* .img-right{
-  background: url('https://demo.kaliumtheme.com/medical/wp-content/uploads/2018/11/happy-patient-and-doctor.jpg') ;
-  float: right;
-  width: 33px;
-  
-} */
-.body{
-  background: url('https://wallpaperaccess.com/full/3988495.jpg') ;
-  background-position: center;
 
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container label {
+  margin-bottom: 8px;
+}
+
+.form-container input {
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-top: 8px;
 }
